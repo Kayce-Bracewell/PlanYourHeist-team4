@@ -1,8 +1,10 @@
 ﻿List<TeamMember> teamMembers = new List<TeamMember>();
 
 Console.WriteLine("Plan Your Heist!");
-
+Random random = new Random();
+int heistLuck = random.Next(-10, 11);
 int bankDifficulty = 100;
+bankDifficulty += heistLuck;
 int teamSkillLevel = 0;
 bool ContinueBool = true;
 while (ContinueBool == true && teamSkillLevel < bankDifficulty)
@@ -34,6 +36,10 @@ while (ContinueBool == true && teamSkillLevel < bankDifficulty)
     );
     teamSkillLevel += recruitSkillLevel;
 }
+
+Console.WriteLine($@"Team skill level: {teamSkillLevel}
+Bank Difficulty: {bankDifficulty}");
+
 if (teamSkillLevel >= bankDifficulty) 
 {
     Console.WriteLine("Success! Strong Team.");
@@ -42,6 +48,9 @@ else
 { 
     Console.WriteLine("Failure, trash.");
 }
+
+
+
 Console.WriteLine($"Number of team members: {teamMembers.Count}");
 foreach (TeamMember teamMember in teamMembers)
 {
