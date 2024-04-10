@@ -7,6 +7,8 @@ int bankDifficulty = 100;
 bankDifficulty += heistLuck;
 int teamSkillLevel = 0;
 bool ContinueBool = true;
+
+Console.WriteLine("----------------------------------");
 while (ContinueBool == true && teamSkillLevel < bankDifficulty)
 {
     Console.WriteLine("Please enter team member's name:");
@@ -37,22 +39,31 @@ while (ContinueBool == true && teamSkillLevel < bankDifficulty)
     teamSkillLevel += recruitSkillLevel;
 }
 
-Console.WriteLine($@"Team skill level: {teamSkillLevel}
-Bank Difficulty: {bankDifficulty}");
-
-if (teamSkillLevel >= bankDifficulty) 
-{
-    Console.WriteLine("Success! Strong Team.");
-}
-else 
-{ 
-    Console.WriteLine("Failure, trash.");
-}
-
-
-
 Console.WriteLine($"Number of team members: {teamMembers.Count}");
 foreach (TeamMember teamMember in teamMembers)
 {
     Console.WriteLine($"{teamMember.Name} has a skill level of {teamMember.SkillLevel} and a courage factor of {teamMember.CourageFactor}");
 }
+
+Console.WriteLine("Please enter number of trial runs to perform..");
+int trialRuns = int.Parse(Console.ReadLine());
+
+for (int i = 0; i < trialRuns; i++)
+{
+    bankDifficulty = random.Next(-10, 11);
+    Console.WriteLine($@"Team skill level: {teamSkillLevel}
+    Bank Difficulty: {bankDifficulty}");
+
+    if (teamSkillLevel >= bankDifficulty) 
+    {
+        Console.WriteLine("Success! Strong Team.");
+    }
+    else 
+    { 
+        Console.WriteLine("Failure, trash.");
+    }
+}
+
+
+
+
