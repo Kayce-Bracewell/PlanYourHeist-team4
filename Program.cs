@@ -3,10 +3,13 @@
 Console.WriteLine("Plan Your Heist!");
 Random random = new Random();
 int heistLuck = random.Next(-10, 11);
-int bankDifficulty = 100;
+Console.WriteLine("Enter bank difficulty level: ");
+int bankDifficulty = int.Parse(Console.ReadLine());
 bankDifficulty += heistLuck;
 int teamSkillLevel = 0;
 bool ContinueBool = true;
+int successCounter = 0;
+int failCounter = 0;
 
 Console.WriteLine("----------------------------------");
 while (ContinueBool == true && teamSkillLevel < bankDifficulty)
@@ -56,13 +59,19 @@ for (int i = 0; i < trialRuns; i++)
 
     if (teamSkillLevel >= bankDifficulty) 
     {
+        successCounter++;
         Console.WriteLine("Success! Strong Team.");
     }
     else 
     { 
+        failCounter++;
         Console.WriteLine("Failure, trash.");
     }
 }
+
+Console.WriteLine(@$"Number of runs:
+Successes: {successCounter}
+Failures: {failCounter}");
 
 
 
