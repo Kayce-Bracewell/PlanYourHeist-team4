@@ -2,9 +2,10 @@
 
 Console.WriteLine("Plan Your Heist!");
 
-
+int bankDifficulty = 100;
+int teamSkillLevel = 0;
 bool ContinueBool = true;
-while (ContinueBool == true)
+while (ContinueBool == true && teamSkillLevel < bankDifficulty)
 {
     Console.WriteLine("Please enter team member's name:");
     string recruitName = Console.ReadLine();
@@ -18,10 +19,10 @@ while (ContinueBool == true)
     Console.WriteLine("Please enter team member's courage factor:");
     decimal recruitCourageFactor = decimal.Parse(Console.ReadLine());
 
-    Console.WriteLine(@$"Recruited Team Member information:
-    Name: {recruitName}
-    Skill level: {recruitSkillLevel}
-    Courage factor: {recruitCourageFactor}");
+    // Console.WriteLine(@$"Recruited Team Member information:
+    // Name: {recruitName}
+    // Skill level: {recruitSkillLevel}
+    // Courage factor: {recruitCourageFactor}");
 
     teamMembers.Add(
         new TeamMember
@@ -31,8 +32,16 @@ while (ContinueBool == true)
             CourageFactor = recruitCourageFactor
         }
     );
+    teamSkillLevel += recruitSkillLevel;
 }
-
+if (teamSkillLevel >= bankDifficulty) 
+{
+    Console.WriteLine("Success! Strong Team.");
+}
+else 
+{ 
+    Console.WriteLine("Failure, trash.");
+}
 Console.WriteLine($"Number of team members: {teamMembers.Count}");
 foreach (TeamMember teamMember in teamMembers)
 {
